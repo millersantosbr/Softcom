@@ -17,6 +17,16 @@
           fontFamily: {
             // Define a fonte 'Inter' como padrão, que é uma fonte moderna e legível
             sans: ['Inter', 'sans-serif'],
+          },
+          // Define a animação de piscar para ser usada com classes Tailwind
+          keyframes: {
+            blink: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0' },
+            }
+          },
+          animation: {
+            blink: 'blink 1s infinite', // Aplica a animação 'blink' com duração de 1 segundo e repetição infinita
           }
         }
       }
@@ -28,6 +38,9 @@
 </head>
 <body class="bg-softcom-yellow flex flex-col items-center justify-center min-h-screen p-4 font-sans">
   <div class="container bg-softcom-purple p-8 rounded-xl shadow-2xl border-4 border-softcom-yellow max-w-md w-full text-center space-y-6">
+    <img src="https://i.imgur.com/raYCNfP.png" alt="Logo Softcom" class="max-h-20 w-auto mx-auto mb-6 shadow-md"
+         onerror="this.onerror=null; this.src='https://placehold.co/150x50/800080/FFFF00?text=Logo+Softcom';">
+
     <div class="title text-4xl md:text-5xl font-extrabold text-softcom-yellow uppercase tracking-wide mb-6">
       LINKS ÚTEIS SOFTCOM
     </div>
@@ -48,7 +61,8 @@
        href="http://177.43.232.5:25123/area-partner/public/autenticacao">
       ÁREA PARTNER
     </a>
-    <div class="footer text-softcom-yellow mt-8 text-xl md:text-2xl font-semibold">
+
+    <div class="footer text-softcom-yellow mt-8 text-4xl md:text-5xl font-extrabold animation-blink">
       Bora Trabalhar! ; )
     </div>
     <div class="footer text-softcom-yellow text-lg md:text-xl font-semibold">
