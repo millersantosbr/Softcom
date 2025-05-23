@@ -1,62 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      background-color: #FFFF00; /* Amarelo em formato hexadecimal (#FFFF00) */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
+  <title>Links Úteis Softcom</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Configuração do Tailwind para adicionar as cores personalizadas (amarelo e roxo)
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'softcom-yellow': '#FFFF00', // Amarelo vibrante
+            'softcom-purple': '#800080', // Roxo escuro
+          },
+          fontFamily: {
+            // Define a fonte 'Inter' como padrão, que é uma fonte moderna e legível
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
     }
-    .container {
-      text-align: center;
-    }
-    .link {
-      text-decoration: none;
-      font-size: 20px;
-      margin: 15px 0;
-      color: #FFFF00; /* Amarelo em formato hexadecimal (#FFFF00) */
-      padding: 15px 30px;
-      background-color: #800080; /* Roxo em formato hexadecimal (#800080) */
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      display: block;
-      font-weight: bold;
-      text-transform: uppercase;
-      font-family: 'Roboto', sans-serif;
-    }
-    .title {
-      font-size: 40px;
-      font-weight: bold;
-      margin-bottom: 30px;
-      text-transform: uppercase;
-      font-family: 'Roboto', sans-serif;
-      color: #800080; /* Roxo em formato hexadecimal (#800080) */
-    }
-    .footer {
-      font-size: 25px; /* Tamanho do texto de rodapé aumentado para combinar com o título */
-      color: #800080; /* Roxo em formato hexadecimal (#800080) */
-      font-family: 'Roboto', sans-serif;
-      margin-top: 20px;
-    }
-  </style>
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
-<body>
-  <div 2class="container">
-    <div class="title">LINKS ÚTEIS SOFTCOM</div>
-    <a class="link" href="https://www.softcom.areaclientes.com.br/login">ÁREA CLIENTES</a>
-    <a class="link" href="https://comercialsmart.softcomshop.com.br/auth/login">DEMO SOFTCOMSHOP</a>
-    <a class="link" href="http://177.43.232.5:25123/helptools2/public/autenticacao">HELPTOOLS</a>
-    <a class="link" href="http://177.43.232.5:25123/area-partner/public/autenticacao">ÁREA PARTNER</a>
-    <a class="link" href="http://demofranquias.softcomtec.com.br:35991/">PAINEL COMERCIAL</a>
-    <div class="footer">Bora Trabalhar! ; )</div>
-    <div class="footer">By Miller Santos</div>
+<body class="bg-softcom-yellow flex flex-col items-center justify-center min-h-screen p-4 font-sans">
+  <div class="container bg-softcom-purple p-8 rounded-xl shadow-2xl border-4 border-softcom-yellow max-w-md w-full text-center space-y-6">
+    <div class="title text-4xl md:text-5xl font-extrabold text-softcom-yellow uppercase tracking-wide mb-6">
+      LINKS ÚTEIS SOFTCOM
+    </div>
+
+    <a class="link block w-full py-4 px-6 bg-softcom-yellow text-softcom-purple font-bold uppercase rounded-lg shadow-xl transition duration-300 ease-in-out hover:bg-yellow-300 hover:scale-105 text-lg md:text-xl"
+       href="https://www.softcom.areaclientes.com.br/login">
+      ÁREA CLIENTES
+    </a>
+    <a class="link block w-full py-4 px-6 bg-softcom-yellow text-softcom-purple font-bold uppercase rounded-lg shadow-xl transition duration-300 ease-in-out hover:bg-yellow-300 hover:scale-105 text-lg md:text-xl"
+       href="https://comercialsmart.softcomshop.com.br/auth/login">
+      DEMO SOFTCOMSHOP
+    </a>
+    <a class="link block w-full py-4 px-6 bg-softcom-yellow text-softcom-purple font-bold uppercase rounded-lg shadow-xl transition duration-300 ease-in-out hover:bg-yellow-300 hover:scale-105 text-lg md:text-xl"
+       href="http://177.43.232.5:25123/helptools2/public/autenticacao">
+      HELPTOOLS
+    </a>
+    <a class="link block w-full py-4 px-6 bg-softcom-yellow text-softcom-purple font-bold uppercase rounded-lg shadow-xl transition duration-300 ease-in-out hover:bg-yellow-300 hover:scale-105 text-lg md:text-xl"
+       href="http://177.43.232.5:25123/area-partner/public/autenticacao">
+      ÁREA PARTNER
+    </a>
+    <a class="link block w-full py-4 px-6 bg-softcom-yellow text-softcom-purple font-bold uppercase rounded-lg shadow-xl transition duration-300 ease-in-out hover:bg-yellow-300 hover:scale-105 text-lg md:text-xl"
+       href="http://demofranquias.softcomtec.com.br:35991/">
+      PAINEL COMERCIAL
+    </a>
+
+    <div class="footer text-softcom-yellow mt-8 text-xl md:text-2xl font-semibold">
+      Bora Trabalhar! ; )
+    </div>
+    <div class="footer text-softcom-yellow text-lg md:text-xl font-semibold">
+      &copy; 2025 Miller Santos
+    </div>
   </div>
 </body>
 </html>
