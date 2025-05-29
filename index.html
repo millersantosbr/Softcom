@@ -6,27 +6,33 @@
   <title>Links Úteis Softcom</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    // Configuração do Tailwind para adicionar as cores personalizadas (amarelo e roxo)
+    // Configuração do Tailwind para adicionar as cores personalizadas e animações
     tailwind.config = {
       theme: {
         extend: {
           colors: {
             'softcom-yellow': '#FFFF00', // Amarelo vibrante
             'softcom-purple': '#800080', // Roxo escuro
+            'dark-background': '#000000', // Alterado para preto puro
+            'pacman-yellow-trans': 'rgba(255, 255, 0, 0.4)', // Amarelo Pac-Man semi-transparente
+            'ghost-purple-trans': 'rgba(128, 0, 128, 0.4)', // Roxo Fantasma semi-transparente
+            'pellet-yellow-trans': 'rgba(255, 255, 0, 0.2)', // Bolinha semi-transparente
           },
           fontFamily: {
             // Define a fonte 'Inter' como padrão, que é uma fonte moderna e legível
             sans: ['Inter', 'sans-serif'],
           },
-          // Define a animação de piscar para ser usada com classes Tailwind
+          // Define as animações personalizadas
           keyframes: {
-            blink: {
-              '0%, 100%': { opacity: '1' },
-              '50%': { opacity: '0' },
+            // Animação de pulso para o texto de alerta
+            pulse: {
+              '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+              '50%': { transform: 'scale(1.05)', opacity: '0.8' },
             }
           },
+          // Aplica as animações com suas durações e repetições
           animation: {
-            blink: 'blink 1s infinite', // Aplica a animação 'blink' com duração de 1 segundo e repetição infinita
+            pulse: 'pulse 1.5s infinite ease-in-out', // Pulso suave e infinito
           }
         }
       }
@@ -35,39 +41,301 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* Estilos CSS para o canvas de fundo */
+    #pacmanCanvas {
+      position: fixed; /* Fixa o canvas na viewport */
+      top: 0;
+      left: 0;
+      width: 100vw; /* Ocupa 100% da largura da viewport */
+      height: 100vh; /* Ocupa 100% da altura da viewport */
+      z-index: -2; /* Coloca o canvas bem atrás do conteúdo principal */
+      background-color: theme('colors.dark-background'); /* Fundo escuro */
+    }
+  </style>
 </head>
-<body class="bg-softcom-yellow flex flex-col items-center justify-center min-h-screen p-4 font-sans">
-  <div class="container bg-softcom-purple p-8 rounded-xl shadow-2xl border-4 border-softcom-yellow max-w-md w-full text-center space-y-6">
-    <img src="https://i.imgur.com/raYCNfP.png" alt="Logo Softcom" class="max-h-20 w-auto mx-auto mb-6 shadow-md"
+<body class="flex flex-col items-center justify-center min-h-screen p-4 font-sans">
+  <canvas id="pacmanCanvas"></canvas>
+
+  <div class="container bg-softcom-purple p-6 rounded-xl shadow-2xl border-4 border-softcom-yellow max-w-sm w-full text-center space-y-4 relative z-10">
+    <img src="https://i.imgur.com/raYCNfP.png" alt="Logo Softcom" class="max-h-16 w-auto mx-auto mb-4 shadow-md"
          onerror="this.onerror=null; this.src='https://placehold.co/150x50/800080/FFFF00?text=Logo+Softcom';">
 
-    <div class="title text-4xl md:text-5xl font-extrabold text-softcom-yellow uppercase tracking-wide mb-6">
+    <div class="title text-3xl md:text-4xl font-extrabold text-softcom-yellow uppercase tracking-wide mb-4">
       LINKS ÚTEIS SOFTCOM
     </div>
 
-    <a class="link block w-full py-4 px-6 bg-softcom-yellow text-softcom-purple font-bold uppercase rounded-lg shadow-xl transition duration-300 ease-in-out hover:bg-yellow-300 hover:scale-105 text-lg md:text-xl"
+    <a class="link block w-full py-3 px-5 bg-softcom-yellow text-softcom-purple font-bold uppercase rounded-lg shadow-xl transition duration-300 ease-in-out hover:bg-yellow-300 hover:scale-105 text-base md:text-lg"
        href="https://www.softcom.areaclientes.com.br/login">
       ÁREA CLIENTES
     </a>
-    <a class="link block w-full py-4 px-6 bg-softcom-yellow text-softcom-purple font-bold uppercase rounded-lg shadow-xl transition duration-300 ease-in-out hover:bg-yellow-300 hover:scale-105 text-lg md:text-xl"
+    <a class="link block w-full py-3 px-5 bg-softcom-yellow text-softcom-purple font-bold uppercase rounded-lg shadow-xl transition duration-300 ease-in-out hover:bg-yellow-300 hover:scale-105 text-base md:text-lg"
        href="https://comercialsmart.softcomshop.com.br/auth/login">
       DEMO SOFTCOMSHOP
     </a>
-    <a class="link block w-full py-4 px-6 bg-softcom-yellow text-softcom-purple font-bold uppercase rounded-lg shadow-xl transition duration-300 ease-in-out hover:bg-yellow-300 hover:scale-105 text-lg md:text-xl"
+    <a class="link block w-full py-3 px-5 bg-softcom-yellow text-softcom-purple font-bold uppercase rounded-lg shadow-xl transition duration-300 ease-in-out hover:bg-yellow-300 hover:scale-105 text-base md:text-lg"
        href="http://177.43.232.5:25123/helptools2/public/autenticacao">
       HELPTOOLS
     </a>
-    <a class="link block w-full py-4 px-6 bg-softcom-yellow text-softcom-purple font-bold uppercase rounded-lg shadow-xl transition duration-300 ease-in-out hover:bg-yellow-300 hover:scale-105 text-lg md:text-xl"
+    <a class="link block w-full py-3 px-5 bg-softcom-yellow text-softcom-purple font-bold uppercase rounded-lg shadow-xl transition duration-300 ease-in-out hover:bg-yellow-300 hover:scale-105 text-base md:text-lg"
        href="http://177.43.232.5:25123/area-partner/public/autenticacao">
       ÁREA PARTNER
     </a>
 
-    <div class="footer text-softcom-yellow mt-8 text-4xl md:text-5xl font-extrabold animation-blink">
+    <div class="footer text-softcom-yellow mt-6 text-3xl md:text-4xl font-extrabold animate-pulse">
       Bora Trabalhar! ; )
     </div>
-    <div class="footer text-softcom-yellow text-lg md:text-xl font-semibold">
+    <div class="footer text-softcom-yellow text-base md:text-lg font-semibold">
       &copy; 2025 Miller Santos
     </div>
   </div>
+
+  <script>
+    // Obtém o canvas e o contexto 2D
+    const canvas = document.getElementById('pacmanCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Define as dimensões do canvas para preencher a tela
+    let vw = window.innerWidth;
+    let vh = window.innerHeight;
+    canvas.width = vw;
+    canvas.height = vh;
+
+    // Redimensiona o canvas quando a janela é redimensionada
+    window.addEventListener('resize', () => {
+      vw = window.innerWidth;
+      vh = window.innerHeight;
+      canvas.width = vw;
+      canvas.height = vh;
+    });
+
+    // --- Configurações da Simulação ---
+    const CELL_SIZE = 40; // Tamanho base para os elementos
+    const PACMAN_RADIUS = CELL_SIZE * 0.4;
+    const GHOST_WIDTH = CELL_SIZE * 0.8;
+    const GHOST_HEIGHT = CELL_SIZE * 0.8;
+    const PELLET_RADIUS = CELL_SIZE * 0.08;
+    const NUM_ELEMENTS = 10; // Número de Pac-Mans, Fantasmas e Bolinhas
+    const SPEED_FACTOR = 0.5; // Velocidade dos elementos
+
+    // Cores (com transparência para o efeito de fundo)
+    const PACMAN_COLOR = tailwind.config.theme.extend.colors['pacman-yellow-trans'];
+    const GHOST_COLOR = tailwind.config.theme.extend.colors['ghost-purple-trans'];
+    const PELLET_COLOR = tailwind.config.theme.extend.colors['pellet-yellow-trans'];
+    const GHOST_EYE_COLOR = tailwind.config.theme.extend.colors['pacman-yellow-trans']; // Cor dos olhos dos fantasmas
+
+    // --- Funções de Desenho ---
+
+    // Desenha o Pac-Man
+    function drawPacman(x, y, radius, mouthOpen, direction) {
+      ctx.beginPath();
+      let startAngle, endAngle;
+
+      // Define a abertura da boca e a direção
+      if (mouthOpen) {
+        if (direction === 'right') { startAngle = 0.25 * Math.PI; endAngle = 1.75 * Math.PI; }
+        else if (direction === 'left') { startAngle = 1.25 * Math.PI; endAngle = 0.75 * Math.PI; }
+        else if (direction === 'up') { startAngle = 1.75 * Math.PI; endAngle = 1.25 * Math.PI; }
+        else if (direction === 'down') { startAngle = 0.75 * Math.PI; endAngle = 0.25 * Math.PI; }
+      } else {
+        startAngle = 0;
+        endAngle = 2 * Math.PI;
+      }
+
+      ctx.arc(x, y, radius, startAngle, endAngle);
+      ctx.lineTo(x, y); // Fecha a boca
+      ctx.fillStyle = PACMAN_COLOR;
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    // Desenha um Fantasma
+    function drawGhost(x, y, width, height, color) {
+      ctx.beginPath();
+      // Corpo do fantasma
+      ctx.arc(x, y, width / 2, Math.PI, 0, false); // Topo arredondado
+      ctx.lineTo(x + width / 2, y + height / 2); // Lado direito
+      ctx.lineTo(x - width / 2, y + height / 2); // Lado esquerdo
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.closePath();
+
+      // Olhos (agora em amarelo semi-transparente)
+      ctx.beginPath();
+      ctx.arc(x - width * 0.15, y - height * 0.2, width * 0.1, 0, Math.PI * 2, true);
+      ctx.arc(x + width * 0.15, y - height * 0.2, width * 0.1, 0, Math.PI * 2, true);
+      ctx.fillStyle = GHOST_EYE_COLOR; // Usando a cor definida para os olhos
+      ctx.fill();
+      ctx.closePath();
+
+      // Íris (pretas)
+      ctx.beginPath();
+      ctx.arc(x - width * 0.15, y - height * 0.2, width * 0.05, 0, Math.PI * 2, true);
+      ctx.arc(x + width * 0.15, y - height * 0.2, width * 0.05, 0, Math.PI * 2, true);
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.8)'; // Íris pretas semi-transparentes
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    // Desenha uma Bolinha
+    function drawPellet(x, y, radius) {
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fillStyle = PELLET_COLOR;
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    // --- Lógica da Simulação ---
+
+    // Classe base para elementos móveis
+    class MovingElement {
+      constructor(x, y, dx, dy) {
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+      }
+
+      update() {
+        this.x += this.dx * SPEED_FACTOR;
+        this.y += this.dy * SPEED_FACTOR;
+
+        // Inverte a direção se atingir as bordas
+        if (this.x + CELL_SIZE / 2 > vw || this.x - CELL_SIZE / 2 < 0) {
+          this.dx *= -1;
+          this.x = Math.max(CELL_SIZE / 2, Math.min(this.x, vw - CELL_SIZE / 2)); // Ajusta posição para evitar "grudar" na borda
+        }
+        if (this.y + CELL_SIZE / 2 > vh || this.y - CELL_SIZE / 2 < 0) {
+          this.dy *= -1;
+          this.y = Math.max(CELL_SIZE / 2, Math.min(this.y, vh - CELL_SIZE / 2)); // Ajusta posição
+        }
+      }
+    }
+
+    // Classe para o Pac-Man na simulação
+    class SimPacman extends MovingElement {
+      constructor(x, y, dx, dy) {
+        super(x, y, dx, dy);
+        this.mouthOpen = true;
+        this.mouthTimer = 0;
+        this.mouthSpeed = 0.1; // Velocidade de abertura/fechamento da boca
+        this.direction = 'right'; // Direção inicial
+
+        // Determina a direção visual com base no movimento
+        if (Math.abs(this.dx) > Math.abs(this.dy)) {
+            this.direction = this.dx > 0 ? 'right' : 'left';
+        } else {
+            this.direction = this.dy > 0 ? 'down' : 'up';
+        }
+      }
+
+      update() {
+        super.update();
+        this.mouthTimer += this.mouthSpeed;
+        if (this.mouthTimer > 1 || this.mouthTimer < 0) {
+          this.mouthSpeed *= -1;
+        }
+        this.mouthOpen = this.mouthTimer > 0.5;
+
+        // Atualiza a direção visual
+        if (Math.abs(this.dx) > Math.abs(this.dy)) {
+            this.direction = this.dx > 0 ? 'right' : 'left';
+        } else {
+            this.direction = this.dy > 0 ? 'down' : 'up';
+        }
+      }
+
+      draw() {
+        drawPacman(this.x, this.y, PACMAN_RADIUS, this.mouthOpen, this.direction);
+      }
+    }
+
+    // Classe para os Fantasmas na simulação
+    class SimGhost extends MovingElement {
+      constructor(x, y, dx, dy, color) {
+        super(x, y, dx, dy);
+        this.color = color;
+      }
+
+      draw() {
+        drawGhost(this.x, this.y, GHOST_WIDTH, GHOST_HEIGHT, this.color);
+      }
+    }
+
+    // Classe para as Bolinhas na simulação (fixas)
+    class SimPellet {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+      }
+
+      draw() {
+        drawPellet(this.x, this.y, PELLET_RADIUS);
+      }
+    }
+
+    // Array para armazenar todos os elementos da simulação
+    const pacmans = [];
+    const ghosts = [];
+    const pellets = [];
+
+    // Gera elementos aleatórios
+    function generateElements() {
+      for (let i = 0; i < NUM_ELEMENTS; i++) {
+        // Posição inicial aleatória
+        const startX = Math.random() * vw;
+        const startY = Math.random() * vh;
+        // Direção inicial aleatória
+        const startDx = (Math.random() - 0.5) * 2; // -1 a 1
+        const startDy = (Math.random() - 0.5) * 2; // -1 a 1
+
+        if (i % 2 === 0) { // Metade Pac-Mans
+          pacmans.push(new SimPacman(startX, startY, startDx, startDy));
+        } else { // Metade Fantasmas
+          ghosts.push(new SimGhost(startX, startY, startDx, startDy, GHOST_COLOR));
+        }
+      }
+
+      // Gera bolinhas em posições aleatórias
+      for (let i = 0; i < NUM_ELEMENTS * 3; i++) { // Mais bolinhas que personagens
+        const pelletX = Math.random() * vw;
+        const pelletY = Math.random() * vh;
+        pellets.push(new SimPellet(pelletX, pelletY));
+      }
+    }
+
+    // Inicia a geração de elementos
+    generateElements();
+
+    // Loop principal de animação
+    function animate() {
+      // Limpa o canvas a cada frame
+      ctx.clearRect(0, 0, vw, vh);
+
+      // Desenha as bolinhas (elas não se movem)
+      pellets.forEach(pellet => pellet.draw());
+
+      // Atualiza e desenha os Pac-Mans
+      pacmans.forEach(pacman => {
+        pacman.update();
+        pacman.draw();
+      });
+
+      // Atualiza e desenha os Fantasmas
+      ghosts.forEach(ghost => {
+        ghost.update();
+        ghost.draw();
+      });
+
+      // Solicita o próximo frame de animação
+      requestAnimationFrame(animate);
+    }
+
+    // Inicia a animação quando a janela é carregada
+    window.onload = function() {
+      animate();
+    };
+  </script>
 </body>
 </html>
