@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Links Úteis Softcom</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel="stylesheet">
   
   <script>
     tailwind.config = {
@@ -19,7 +20,8 @@
             'softcom-purple-dark': '#2D004F',
           },
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            // ATUALIZADO: Configurando a Google Sans Flex como fonte padrão
+            sans: ['"Google Sans Flex"', 'sans-serif'],
           },
           animation: {
             'shimmer': 'shimmer 2.5s infinite linear',
@@ -99,10 +101,8 @@
 
   <main class="w-full max-w-md relative z-10 pt-4 pb-8 sm:py-0">
     
-    <!-- Glass Card Container -->
     <div class="glass-card rounded-[2rem] p-6 sm:p-8 space-y-6">
       
-      <!-- Logo Centralizada -->
       <div class="text-center animate-float pt-2">
         <img src="https://raw.githubusercontent.com/mflabsbr/images/8620b6099e14fefede39ea6b243f661de20d3d21/Design%20sem%20nome%20(7).svg" 
              alt="Logo Softcom" 
@@ -110,12 +110,10 @@
              onerror="this.onerror=null; this.src='https://placehold.co/200x80/4B0082/FFFF00?text=SOFTCOM';">
       </div>
 
-      <!-- Subtítulo informativo -->
       <div class="text-center">
         <p class="text-gray-400 text-xs sm:text-sm font-medium tracking-wide text-balance">Acesso rápido aos sistemas internos</p>
       </div>
 
-      <!-- Grade de Links -->
       <nav class="space-y-3">
         <a href="https://www.softcom.areaclientes.com.br/login" 
            class="btn-softcom group justify-between w-full px-5 py-4 bg-white/5 rounded-2xl">
@@ -172,7 +170,6 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500 group-hover:text-green-400 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
 
-        <!-- Novo Link Adicionado: Portal de Serviços -->
         <a href="https://portal.softcomservices.com/" 
            class="btn-softcom group justify-between w-full px-5 py-4 bg-white/5 rounded-2xl">
           <div class="flex items-center gap-4 text-left">
